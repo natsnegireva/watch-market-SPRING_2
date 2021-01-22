@@ -1,6 +1,6 @@
 package ru.geekbrains.watch.market.services;
 
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
@@ -12,9 +12,13 @@ import ru.geekbrains.watch.market.repositories.ProductRepository;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class ProductService {
     private ProductRepository productRepository;
+
+    @Autowired
+    public ProductService(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
 
     public Optional<ProductDto> findProductById(Long id) {
         return productRepository.findById(id).map(ProductDto::new);
@@ -24,8 +28,8 @@ public class ProductService {
         return productRepository.findAll(spec, PageRequest.of(page - 1, pageSize)).map(ProductDto::new);
     }
 
-    public Product saveOrUpdate(Product p) {
-        return productRepository.save(p);
+    public Product saveOrUpdate(Product product) {
+        return productRepository.save(product);
     }
 
     public void deleteById(Long id) {

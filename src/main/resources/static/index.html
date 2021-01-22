@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html ng-app="app" lang="en">
+<html ng-app="app">
 
 <head>
     <meta charset="utf-8">
@@ -51,13 +51,16 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="p in ProductsPage.content">
-            <td>{{p.imgPathname}}</td>
+        <tr ng-repeat="p in ProductsPage.context">
+            <td><img src="{{p.pathname}}" width="100px" height="100px"></td>
             <td>{{p.title}}</td>
             <td>{{p.description}}</td>
             <td>{{p.price}}</td>
             <td>
-                <button class="btn btn-danger" ng-click="deleteProductById(p.id)">Удалить часы</button>
+                <button class="btn btn-success" ng-click="addToCart(p.id)">Купить</button>
+            </td>
+            <td>
+                <button class="btn btn-danger" ng-click="deleteProductById(p.id)">Удалить</button>
             </td>
         </tr>
         </tbody>

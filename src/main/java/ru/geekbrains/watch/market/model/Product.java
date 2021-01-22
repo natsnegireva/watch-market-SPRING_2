@@ -21,8 +21,8 @@ public class Product {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "img_pathname")
-    public String imgPathname;
+    @Column(name = "pathname")
+    public String pathname;
 
     @Column(name = "description")
     private String description;
@@ -47,8 +47,8 @@ public class Product {
         return title;
     }
 
-    public String getImgPathname() {
-        return imgPathname;
+    public String getPathname() {
+        return pathname;
     }
 
     public String getDescription() {
@@ -68,7 +68,7 @@ public class Product {
         return "Product{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", imgPathname='" + imgPathname + '\'' +
+                ", pathname='" + pathname + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 '}';

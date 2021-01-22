@@ -19,17 +19,32 @@ public class ProductSpecifications {
         return (Specification<Product>) (root, criteriaQuery, criteriaBuilder) -> criteriaBuilder.like (root.get ("title"), String.format ("%%%s%%", titlePart));
     }
 
+    private static Specification<Product> descriptionLike(String descriptionPart) {
+        return (Specification<Product>) (root, criteriaQuery, criteriaBuilder) -> criteriaBuilder.like (root.get ("description"), String.format ("%%%s%%", descriptionPart));
+    }
+
+    private static Specification<Product> pathnameLike(String pathnamePart) {
+        return (Specification<Product>) (root, criteriaQuery, criteriaBuilder) -> criteriaBuilder.like (root.get ("pathname"), String.format ("%%%s%%", pathnamePart));
+    }
+
+
     // заменила isBlank
     public static Specification<Product> build(MultiValueMap<String, String> params) {
         Specification<Product> spec = Specification.where (null);
-        if (params.containsKey ("min_price") && !Objects.requireNonNull (params.getFirst ("min_price").isEmpty ())) {
-            spec = spec.and (ProductSpecifications.priceGreaterOrEqualsThan (Integer.parseInt (params.getFirst ("min_price"))));
+        if (params.containsKey ("min_price") && !Objects.requireNonNull (params.getFirst ("min_price")).isEmpty ()) {
+            spec = spec.and (ProductSpecifications.priceGreaterOrEqualsThan (Integer.parseInt (Objects.requireNonNull (params.getFirst ("min_price")))));
         }
         if (params.containsKey ("max_price") && !Objects.requireNonNull (params.getFirst ("max_price")).isEmpty ()) {
-            spec = spec.and (ProductSpecifications.priceLesserOrEqualsThan (Integer.parseInt (params.getFirst ("max_price"))));
+            spec = spec.and (ProductSpecifications.priceLesserOrEqualsThan (Integer.parseInt (Objects.requireNonNull (params.getFirst ("max_price")))));
         }
-        if (params.containsKey ("title") && !Objects.requireNonNull (params.getFirst ("title").isEmpty ())) {
+        if (params.containsKey ("title") && !Objects.requireNonNull (params.getFirst ("title")).isEmpty ()) {
             spec = spec.and (ProductSpecifications.titleLike (params.getFirst ("title")));
+        }
+        if (params.containsKey ("description") && !Objects.requireNonNull (params.getFirst ("description")).isEmpty ()) {
+            spec = spec.and (ProductSpecifications.descriptionLike (params.getFirst ("description")));
+        }
+        if (params.containsKey ("pathname") && !Objects.requireNonNull (params.getFirst ("pathname")).isEmpty ()) {
+            spec = spec.and (ProductSpecifications.pathnameLike (params.getFirst ("pathname")));
         }
         return spec;
     }

@@ -1,6 +1,6 @@
 package ru.geekbrains.watch.market.controllers;
 
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.MultiValueMap;
@@ -13,26 +13,23 @@ import ru.geekbrains.watch.market.services.ProductService;
 
 @RestController
 @RequestMapping("/api/v1/products")
-@RequiredArgsConstructor
 public class ProductController {
     private ProductService productService;
+
+    @Autowired
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
     @GetMapping
     public Page<ProductDto> findAllProducts(
             @RequestParam MultiValueMap<String, String> params,
             @RequestParam(name = "p", defaultValue = "1") Integer page
     ) {
-        Page<ProductDto> productDtoPage = null;
         if (page < 1) {
             page = 1;
         }
-        try {
-            productDtoPage = productService.findAll (ProductSpecifications.build (params), page, 2);
-
-        } catch (NullPointerException n) {
-            n.printStackTrace ();
-        }
-        return productDtoPage;
+        return productService.findAll(ProductSpecifications.build(params), page, 2);
     }
 
     // http://localhost:8189/watch/api/v1/products
@@ -54,7 +51,10 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public void updateProduct(@PathVariable Long id) {
         productService.deleteById(id);
     }
+
+
 }

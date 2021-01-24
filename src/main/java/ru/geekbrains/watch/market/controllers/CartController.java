@@ -1,34 +1,31 @@
 package ru.geekbrains.watch.market.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.geekbrains.watch.market.beans.Cart;
+import ru.geekbrains.watch.market.dto.CartDTO;
 
 @RestController
-@RequestMapping("api/v1/cart")
+@RequestMapping("/api/v1/cart")
+@RequiredArgsConstructor
 public class CartController {
     private final Cart cart;
 
-    @Autowired
-    public CartController(Cart cart) {
-        this.cart = cart;
+    @GetMapping
+    public CartDTO getCart() {
+        return new CartDTO(cart);
     }
 
-    @GetMapping("/add/{productId}")
-    public void addProduct(@PathVariable(name = "book_id") Long productId) {
-        cart.addProduct (productId);
+    @GetMapping("/add/{id}")
+    public void addToCart(@PathVariable Long id) {
+        cart.addToCart(id);
     }
 
-    @GetMapping("/remove/{productId}")
-    public void removeProduct(@PathVariable(name = "book_id") Long productId) {
-        cart.removeProduct (productId);
-    }
-
-    @GetMapping("/clear/")
-    public void clear() {
-        cart.clear ();
+    @GetMapping("/clear")
+    public void clearCart() {
+        cart.clear();
     }
 }

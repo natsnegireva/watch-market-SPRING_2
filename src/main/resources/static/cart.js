@@ -10,13 +10,6 @@ angular.module('app1').controller('cartController', function ($scope, $http) {
         });
     };
 
-    $scope.addToCart = function (productId) {
-        $http.get(contextPath + '/cart/add/' + productId)
-            .then(function (response) {
-                $scope.showCart();
-            });
-    }
-
     $scope.clearCart = function () {
         $http.get(contextPath + '/cart/clear')
             .then(function (response) {

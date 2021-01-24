@@ -75,6 +75,13 @@ angular.module('app', []).controller('productController', function ($scope, $htt
         $scope.fillTable();
     }
 
+
+    $scope.addToCart = function (productId) {
+        $http.get(contextPath + '/cart/add/' + productId)
+            .then(function (response) {
+                $scope.showCart();
+            });
+    }
     $scope.goToCart = function () {
         window.location.assign('cart.html');
     }

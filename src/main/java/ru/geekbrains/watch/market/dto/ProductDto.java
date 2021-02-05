@@ -8,18 +8,14 @@ import ru.geekbrains.watch.market.model.Product;
 @Data
 @NoArgsConstructor
 @Profile("product")
-public class ProductDTO {
+public class ProductDto {
     private Long id;
     private String title;
-    private String pathname;
-    private String description;
     private int price;
 
-    public ProductDTO(Product p) {
+    public ProductDto(Product p) {
         this.id = p.getId();
         this.title = p.getTitle();
-        this.pathname = p.getPathname();
-        this.description = p.getDescription();
         this.price = p.getPrice();
     }
 

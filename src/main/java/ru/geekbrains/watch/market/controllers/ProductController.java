@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
-import ru.geekbrains.watch.market.dto.ProductDTO;
+import ru.geekbrains.watch.market.dto.ProductDto;
 import ru.geekbrains.watch.market.exceptions_handling.ResourceNotFoundException;
 import ru.geekbrains.watch.market.model.Product;
 import ru.geekbrains.watch.market.repositories.specifications.ProductSpecifications;
@@ -20,7 +20,7 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping
-    public Page<ProductDTO> findAllProducts(
+    public Page<ProductDto> findAllProducts(
             @RequestParam MultiValueMap<String, String> params,
             @RequestParam(name = "p", defaultValue = "1") Integer page
     ) {
@@ -32,7 +32,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ProductDTO findProductById(@PathVariable Long id) {
+    public ProductDto findProductById(@PathVariable Long id) {
         return productService.findProductDtoById(id).orElseThrow(() -> new ResourceNotFoundException ("Product with id: " + id + " doens't exist"));
     }
 

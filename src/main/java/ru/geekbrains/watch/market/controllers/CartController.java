@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.geekbrains.watch.market.beans.Cart;
-import ru.geekbrains.watch.market.dto.CartDTO;
+import ru.geekbrains.watch.market.dto.CartDto;
 
 @RestController
 @RequestMapping("/api/v1/cart")
@@ -15,8 +15,8 @@ public class CartController {
     private final Cart cart;
 
     @GetMapping
-    public CartDTO getCart() {
-        return new CartDTO(cart);
+    public CartDto getCart() {
+        return new CartDto (cart);
     }
 
     @GetMapping("/add/{id}")
@@ -28,4 +28,5 @@ public class CartController {
     public void clearCart() {
         cart.clear();
     }
+
 }

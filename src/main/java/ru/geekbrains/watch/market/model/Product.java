@@ -21,12 +21,6 @@ public class Product {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "pathname")
-    public String pathname;
-
-    @Column(name = "description")
-    private String description;
-
     @Column(name = "price")
     private int price;
 
@@ -37,4 +31,4 @@ public class Product {
     @Column(name = "updated_at")
     @UpdateTimestamp
     private LocalDateTime updatedAt;
- }
+}

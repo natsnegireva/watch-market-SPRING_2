@@ -6,13 +6,13 @@ import ru.geekbrains.watch.market.model.OrderItem;
 
 @NoArgsConstructor
 @Data
-public class OrderItemDTO {
+public class OrderItemDto {
     private String productTitle;
     private int quantity;
     private int pricePerProduct;
     private int price;
 
-    public OrderItemDTO(OrderItem orderItem) {
+    public OrderItemDto(OrderItem orderItem) {
         this.productTitle = orderItem.getProduct().getTitle();
         this.quantity = orderItem.getQuantity();
         this.pricePerProduct = orderItem.getPricePerProduct();

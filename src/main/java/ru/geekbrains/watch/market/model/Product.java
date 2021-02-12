@@ -8,10 +8,10 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@NoArgsConstructor
-@Data
 @Entity
 @Table(name = "products")
+@Data
+@NoArgsConstructor
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,8 +21,14 @@ public class Product {
     @Column(name = "title")
     private String title;
 
+    @Column(name = "description")
+    private String description;
+
     @Column(name = "price")
     private int price;
+
+    @Column(name = "pathname")
+    private String pathname;
 
     @Column(name = "created_at")
     @CreationTimestamp

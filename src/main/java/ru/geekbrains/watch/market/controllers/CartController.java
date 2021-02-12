@@ -16,7 +16,7 @@ public class CartController {
 
     @GetMapping
     public CartDto getCart() {
-        return new CartDto (cart);
+        return new CartDto(cart);
     }
 
     @GetMapping("/add/{id}")
@@ -28,5 +28,4 @@ public class CartController {
     public void clearCart() {
         cart.clear();
     }
-
 }

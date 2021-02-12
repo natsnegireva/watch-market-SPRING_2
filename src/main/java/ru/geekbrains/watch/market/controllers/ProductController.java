@@ -1,7 +1,6 @@
 package ru.geekbrains.watch.market.controllers;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.MultiValueMap;
@@ -13,7 +12,6 @@ import ru.geekbrains.watch.market.repositories.specifications.ProductSpecificati
 import ru.geekbrains.watch.market.services.ProductService;
 
 @RestController
-@Profile("products")
 @RequestMapping("/api/v1/products")
 @RequiredArgsConstructor
 public class ProductController {
@@ -28,12 +26,12 @@ public class ProductController {
             page = 1;
         }
 
-        return productService.findAll(ProductSpecifications.build(params), page, 3);
+        return productService.findAll(ProductSpecifications.build(params), page, 4);
     }
 
     @GetMapping("/{id}")
     public ProductDto findProductById(@PathVariable Long id) {
-        return productService.findProductDtoById(id).orElseThrow(() -> new ResourceNotFoundException ("Product with id: " + id + " doens't exist"));
+        return productService.findProductDtoById(id).orElseThrow(() -> new ResourceNotFoundException("Product with id: " + id + " doens't exist"));
     }
 
     @PostMapping
@@ -49,7 +47,6 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
     public void updateProduct(@PathVariable Long id) {
         productService.deleteById(id);
     }

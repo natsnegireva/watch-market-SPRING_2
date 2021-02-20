@@ -47,16 +47,16 @@ create table products (
 
 insert into products (title, description, price, pathname)
 values
-('Black Silicon Strap Watch', 'Interactively expedite business materials without holistic information', 89, 'img1.jpg'),
-('Blue Silicon Strap Watch', 'Competently build 24/7 “outside the box” thinking via excellent paradigms', 149, 'img2.jpg'),
-('Golden Watch', 'Seamlessly predominate flexible niches whereas seamless total linkage', 1189, 'img3.jpg'),
-('Leather Strap Watch', 'Uniquely syndicate resource sucking synergy and economically sound e-tailers', 279, 'img4.jpg'),
-('Leather Strap Watch', 'Proactively unleash customized imperatives whereas timely meta-services', 379, 'img5.jpg'),
-('Leather Strap Watch', 'Interactively matrix excellent benefits via adaptive e-tailers', 259, 'img6.jpg'),
-('Luxury Watch', 'Uniquely generate emerging functionalities whereas leveraged e-business', 689, 'img7.jpg'),
-('Silicone Strap Watch', 'Collaboratively enable multimedia based supply chains for leveraged mindshare', 156, 'img8.jpg'),
-('Sports Watch', 'Seamlessly develop strategic e-tailers rather than magnetic platforms', 169, 'img9.jpg'),
-('Stainless Steel Watch', 'Professionally disintermediate revolutionary solutions via best-of-breed', 499, 'img10.jpg');
+('Black Silicon Strap Watch', 'Interactively expedite business materials without holistic information', 89, 'img/products/img1.jpg'),
+('Blue Silicon Strap Watch', 'Competently build 24/7 “outside the box” thinking via excellent paradigms', 149, 'img/products/img2.jpg'),
+('Golden Watch', 'Seamlessly predominate flexible niches whereas seamless total linkage', 1189, 'img/products/img3.jpg'),
+('Leather Strap Watch', 'Uniquely syndicate resource sucking synergy and economically sound e-tailers', 279, 'img/products/img4.jpg'),
+('Leather Strap Watch', 'Proactively unleash customized imperatives whereas timely meta-services', 379, 'img/products/img5.jpg'),
+('Leather Strap Watch', 'Interactively matrix excellent benefits via adaptive e-tailers', 259, 'img/products/img6.jpg'),
+('Luxury Watch', 'Uniquely generate emerging functionalities whereas leveraged e-business', 689, 'img/products/img7.jpg'),
+('Silicone Strap Watch', 'Collaboratively enable multimedia based supply chains for leveraged mindshare', 156, 'img/products/img8.jpg'),
+('Sports Watch', 'Seamlessly develop strategic e-tailers rather than magnetic platforms', 169, 'img/products/img9.jpg'),
+('Stainless Steel Watch', 'Professionally disintermediate revolutionary solutions via best-of-breed', 499, 'img/products/img10.jpg');
 
 create table orders (
                         id                      bigserial primary key,

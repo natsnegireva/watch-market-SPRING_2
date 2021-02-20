@@ -11,11 +11,13 @@ public class ProductDto {
     private String title;
     private int price;
     private String description;
+    private String pathname;
 
     public ProductDto(Product p) {
         this.id = p.getId();
         this.title = p.getTitle();
         this.price = p.getPrice();
         this.description = p.getDescription ();
+        this.pathname = p.getPathname ();
     }
 }

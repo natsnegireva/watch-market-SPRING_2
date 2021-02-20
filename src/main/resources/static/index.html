@@ -1,0 +1,77 @@
+<!doctype html>
+
+<html ng-app="app">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular-route.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js"></script>
+
+</head>
+
+<body>
+<div class="container">
+    <div ng-controller="indexController" style="margin-left: auto; margin-right: auto; width: 100%; background-color: white; vertical-align: center;">
+        <img srcset="img/banner.jpg" alt="Watch Shop" align="center" />
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="collapse navbar-collapse" id="navbarNav" >
+                <ul class="navbar-nav">
+                    <li class="nav-item" style="margin-left: 10px;">
+                        <a class="btn btn-outline-warning" href="#!/">Главная</a>
+                    </li>
+                    <li class="nav-item" style="margin-left: 10px;">
+                        <a class="btn btn-outline-warning" href="#!/products">Каталог товаров</a>
+                    </li>
+                    <li class="nav-item" style="margin-left: 10px;">
+                        <a class="btn btn-outline-warning" href="#!/orders" ng-if="isUserLoggedIn()">Мои заказы</a>
+                    </li>
+                    <li class="nav-item" style="margin-left: 10px;">
+                        <a class="btn btn-outline-warning" href="#!/cart">Корзина</a>
+                    </li>
+                    <li class="nav-item" ng-show="!isUserLoggedIn()">
+                        <form class="align-middle" ng-submit="tryToAuth()">
+                            <div class="input-group-prepend">
+                                <input id="navLoginField" class="form-control" ng-model="user.username" type="text"
+                                       aria-describedby="inputGroup-sizing-sm" style="margin-left: 10px;">
+
+                                <input id="navPasswordField" class="form-control" ng-model="user.password" type="password"
+                                       aria-describedby="inputGroup-sizing-sm" style="margin-left: 10px;">
+
+                                <button id="navLoginSubmit" class="btn btn-outline-warning btn-sm"
+                                        style="margin-left: 10px;" type="submit">Войти
+                                </button>
+                            </div>
+                        </form>
+                    </li>
+                    <li class="nav-item" ng-if="isUserLoggedIn()" style="margin-left: 10px;">
+                        <button class="btn btn-outline-secondary" ng-click="tryToLogout()">Выйти</button>
+                    </li>
+                    <li class="nav-item" ng-show="isUserLoggedIn()" style="margin-left: 10px;">
+                        <span>Добро пожаловать, <b>{{currentUserName}}</b> !</span>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+
+
+    <ng-view></ng-view>
+
+    <script src="index.js"></script>
+    <script src="home/home.js"></script>
+    <script src="products/products.js"></script>
+    <script src="cart/cart.js"></script>
+    <script src="order_confirmation/order_confirmation.js"></script>
+    <script src="order_result/order_result.js"></script>
+    <script src="orders/orders.js"></script>
+
+</div>
+</body>
+</html>

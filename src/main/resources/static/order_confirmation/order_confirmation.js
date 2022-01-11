@@ -1,6 +1,5 @@
 angular.module('app').controller('orderConfirmationController', function ($scope, $http, $location) {
     const contextPath = 'http://localhost:8189/watch';
-
     $scope.cartContentRequest = function () {
         $http({
             url: contextPath + '/api/v1/cart',

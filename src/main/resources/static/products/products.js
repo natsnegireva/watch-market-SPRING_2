@@ -1,6 +1,5 @@
 angular.module('app').controller('productsController', function ($scope, $http) {
     const contextPath = 'http://localhost:8189/watch';
-
     $scope.showProductsPage = function (pageIndex = 1) {
         $http({
             url: contextPath + '/api/v1/products',

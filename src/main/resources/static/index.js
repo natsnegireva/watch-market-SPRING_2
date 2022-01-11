@@ -66,6 +66,7 @@
     }
 })();
 
+
 angular.module('app').controller('indexController', function ($scope, $http, $localStorage) {
     const contextPath = 'http://localhost:8189/watch';
 

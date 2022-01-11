@@ -20,6 +20,7 @@
     </tr>
     </tbody>
 </table>
+
 <span ng-show="Cart.items.length == 0">Ваша корзина пуста</span>
 <button ng-show="Cart.items.length > 0" class="btn btn-primary" ng-click="goToOrderSubmit()">Перейти к оформлению заказа</button>
 <button ng-show="Cart.items.length > 0"  class="btn btn-danger" ng-click="clearCart()">Очистить корзину</button>

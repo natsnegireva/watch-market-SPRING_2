@@ -8,6 +8,7 @@
 		<version>2.4.1</version>
 		<relativePath/>
 	</parent>
+	
 	<groupId>ru.geekbrains.watch.market</groupId>
 	<artifactId>watch-market</artifactId>
 	<version>0.0.1-SNAPSHOT</version>

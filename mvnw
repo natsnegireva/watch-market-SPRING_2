@@ -21,11 +21,13 @@
 # ----------------------------------------------------------------------------
 # Maven Start Up Batch script
 #
-# Required ENV vars:
+# Required ENV vars: 
 # ------------------
+#
 #   JAVA_HOME - location of a JDK home dir
 #
-# Optional ENV vars
+# Optional ENV vars  
+#
 # -----------------
 #   M2_HOME - location of maven2's installed home dir
 #   MAVEN_OPTS - parameters passed to the Java VM when running Maven

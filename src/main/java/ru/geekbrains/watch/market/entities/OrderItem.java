@@ -1,5 +1,6 @@
-package ru.geekbrains.watch.market.model;
+package ru.geekbrains.watch.market.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -8,10 +9,11 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@NoArgsConstructor
-@Data
 @Entity
 @Table(name = "order_items")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,21 +21,21 @@ public class OrderItem {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "order_id")
-    private Order order;
-
-    @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
 
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
+
     @Column(name = "quantity")
-    private int quantity;
+    private Integer quantity;
 
     @Column(name = "price_per_product")
-    private int pricePerProduct;
+    private Integer pricePerProduct;
 
     @Column(name = "price")
-    private int price;
+    private Integer price;
 
     @CreationTimestamp
     @Column(name = "created_at")
@@ -42,21 +44,4 @@ public class OrderItem {
     @UpdateTimestamp
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
-
-    public OrderItem(Product product) {
-        this.product = product;
-        this.quantity = 1;
-        this.pricePerProduct = product.getPrice();
-        this.price = this.pricePerProduct;
-    }
-
-    public void incrementQuantity() {
-        quantity++;
-        price = quantity * pricePerProduct;
-    }
-
-    public void decrementQuantity() {
-        quantity--;
-        price = quantity * pricePerProduct;
-    }
 }

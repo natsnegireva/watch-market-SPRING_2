@@ -8,8 +8,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.geekbrains.watch.market.model.Role;
-import ru.geekbrains.watch.market.model.User;
+import ru.geekbrains.watch.market.entities.Role;
+import ru.geekbrains.watch.market.entities.User;
 import ru.geekbrains.watch.market.repositories.UserRepository;
 
 import java.util.Collection;
@@ -22,6 +22,7 @@ public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
 
     public Optional<User> findByUsername(String username) {
+
         return userRepository.findByUsername(username);
     }
 
@@ -33,10 +34,6 @@ public class UserService implements UserDetailsService {
     }
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
-        return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
-    }
-
-    public User saveOrUpdate(User user) {
-        return userRepository.save(user);
+        return roles.stream().map(role -> new SimpleGrantedAuthority (role.getName())).collect(Collectors.toList());
     }
 }

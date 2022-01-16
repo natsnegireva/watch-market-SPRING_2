@@ -1,4 +1,4 @@
-package ru.geekbrains.watch.market.beans;
+package ru.geekbrains.watch.market.utils;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -20,6 +20,9 @@ public class JwtTokenUtil {
     @Value("${jwt.secret}")
     private String secret;
 
+    @Value("${jwt.lifetime}")
+    private Integer jwtLifetime;
+
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
         List<String> rolesList = userDetails.getAuthorities().stream()
@@ -28,7 +31,7 @@ public class JwtTokenUtil {
         claims.put("roles", rolesList);
 
         Date issuedDate = new Date();
-        Date expiredDate = new Date(issuedDate.getTime() + 20 * 60 * 1000); // todo
+        Date expiredDate = new Date(issuedDate.getTime() + jwtLifetime);
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(userDetails.getUsername())

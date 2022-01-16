@@ -1,4 +1,4 @@
-package ru.geekbrains.watch.market.model;
+package ru.geekbrains.watch.market.entities;
 
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;

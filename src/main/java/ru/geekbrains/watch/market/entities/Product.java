@@ -1,4 +1,4 @@
-package ru.geekbrains.watch.market.model;
+package ru.geekbrains.watch.market.entities;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,20 +21,20 @@ public class Product {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "description")
-    private String description;
-
     @Column(name = "price")
-    private int price;
+    private Integer price;
 
-    @Column(name = "pathname")
-    private String pathname;
-
-    @Column(name = "created_at")
     @CreationTimestamp
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    @Column(name = "updated_at")
     @UpdateTimestamp
+    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    public Product(Long id, String title, Integer price) {
+        this.id = id;
+        this.title = title;
+        this.price = price;
+    }
 }

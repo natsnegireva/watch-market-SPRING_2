@@ -2,7 +2,7 @@ package ru.geekbrains.watch.market.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import ru.geekbrains.watch.market.model.User;
+import ru.geekbrains.watch.market.entities.User;
 
 import java.util.Optional;
 

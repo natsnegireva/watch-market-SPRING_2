@@ -1,4 +1,4 @@
-package ru.geekbrains.watch.market.exceptions_handling;
+package ru.geekbrains.watch.market.exceptions;
 
 public class ResourceNotFoundException extends RuntimeException {
     public ResourceNotFoundException(String message) {

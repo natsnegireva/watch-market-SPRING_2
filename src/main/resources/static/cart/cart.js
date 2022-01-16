@@ -1,7 +1,6 @@
 angular.module('app').controller('cartController', function ($scope, $http, $location) {
     const contextPath = 'http://localhost:8189/watch';
 
-    
     $scope.showCart = function () {
         $http({
             url: contextPath + '/api/v1/cart',
